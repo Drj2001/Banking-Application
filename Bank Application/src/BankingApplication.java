@@ -205,7 +205,7 @@ public class BankingApplication {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "UPDATE users SET total_withdrawals = ? WHERE account_no = ?")) {
-           // preparedStatement.setDouble(1, newWithdrawal);
+            preparedStatement.setDouble(1, newWithdrawal);
             preparedStatement.setString(2, accountNumber);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -216,7 +216,7 @@ public class BankingApplication {
 
     private static class BankAccount {
         private String accountNumber;
-        private double amount;
+        private double amount; 
         private double totalDeposits;
         private double totalWithdrawals;
         private double currentBalance;
